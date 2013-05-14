@@ -8,18 +8,20 @@ public class DoorPasser {
 		ArrayList<Boolean> result = initializeDoorsAreOpen(doorCount);
 		
 		if (passCount >= 1)
-			for (int doorIndex = 0; doorIndex < doorCount; doorIndex++)
-				result.set(doorIndex, !result.get(doorIndex));
+			reverseDoors(doorCount, 1, result);
 		
 		if (passCount >= 2 && doorCount >= 2)
-			for (int doorIndex = 1; doorIndex < doorCount; doorIndex += 2)
-				result.set(doorIndex, !result.get(doorIndex));
+			reverseDoors(doorCount, 2, result);
 		
 		if (passCount == 3 && doorCount >= 3)
-			for (int doorIndex = 2; doorIndex < doorCount; doorIndex += 3)
-				result.set(doorIndex, !result.get(doorIndex));
+			reverseDoors(doorCount, 3, result);
 		
 		return result;
+	}
+
+	private void reverseDoors(int doorCount, int currentPass, ArrayList<Boolean> result) {
+		for (int doorIndex = currentPass - 1; doorIndex < doorCount; doorIndex += currentPass)
+			result.set(doorIndex, !result.get(doorIndex));
 	}
 
 	private ArrayList<Boolean> initializeDoorsAreOpen(int doorCount) {
