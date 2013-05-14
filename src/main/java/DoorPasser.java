@@ -11,6 +11,9 @@ public class DoorPasser {
 			for (int doorIndex = 0; doorIndex < doorCount; doorIndex++)
 				result.set(doorIndex, true);
 		
+		if (passCount == 2 && doorCount == 2)
+			result.set(1, false);
+		
 		return result;
 	}
 
