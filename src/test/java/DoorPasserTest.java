@@ -32,8 +32,10 @@ public class DoorPasserTest {
 	}
 	
 	@Test
-	public void two_door_two_pass() {
+	public void any_door_two_pass() {
 		assertEquals(expectedDoorsAreOpen(true, false), passer.pass(2, 2));
+		assertEquals(expectedDoorsAreOpen(true, false, true), passer.pass(3, 2));
+		assertEquals(expectedDoorsAreOpen(true, false, true, false), passer.pass(4, 2));
 	}
 	
 	private ArrayList<Boolean> expectedDoorsAreOpen(Boolean... isOpenFlag) {
