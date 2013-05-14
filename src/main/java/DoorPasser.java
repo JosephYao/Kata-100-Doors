@@ -8,7 +8,8 @@ public class DoorPasser {
 		ArrayList<Boolean> result = initializeDoorsAreOpen(doorCount);
 		
 		if (passCount >= 1)
-			result.set(0, true);
+			for (int doorIndex = 0; doorIndex < doorCount; doorIndex++)
+				result.set(doorIndex, true);
 		
 		return result;
 	}
