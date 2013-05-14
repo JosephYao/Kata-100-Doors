@@ -5,7 +5,12 @@ import java.util.List;
 public class DoorPasser {
 
 	public List<Boolean> pass(int doorCount, int passCount) {
-		return initializeDoorsAreOpen(doorCount);
+		ArrayList<Boolean> result = initializeDoorsAreOpen(doorCount);
+		
+		if (passCount >= 1)
+			result.set(0, true);
+		
+		return result;
 	}
 
 	private ArrayList<Boolean> initializeDoorsAreOpen(int doorCount) {
