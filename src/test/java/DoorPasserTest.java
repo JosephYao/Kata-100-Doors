@@ -21,13 +21,8 @@ public class DoorPasserTest {
 	}
 	
 	@Test
-	public void one_door_any_pass() {
+	public void any_door_one_pass() {
 		assertEquals(expectedDoorsAreOpen(true), passer.pass(1, 1));
-		assertEquals(expectedDoorsAreOpen(true), passer.pass(1, 2));
-	}
-	
-	@Test
-	public void two_door_one_pass() {
 		assertEquals(expectedDoorsAreOpen(true, true), passer.pass(2, 1));
 	}
 	
@@ -44,6 +39,13 @@ public class DoorPasserTest {
 		assertEquals(expectedDoorsAreOpen(true, false, false), passer.pass(3, 3));
 		assertEquals(expectedDoorsAreOpen(true, false, false, false), passer.pass(4, 3));
 		assertEquals(expectedDoorsAreOpen(true, false, false, false, true, true), passer.pass(6, 3));
+	}
+	
+	@Test
+	public void acceptance_test() {
+		assertEquals(expectedDoorsAreOpen(
+				true, false, false, true, false, false, false, false, true, false), 
+				passer.pass(10, 10));
 	}
 	
 	private ArrayList<Boolean> expectedDoorsAreOpen(Boolean... isOpenFlag) {
